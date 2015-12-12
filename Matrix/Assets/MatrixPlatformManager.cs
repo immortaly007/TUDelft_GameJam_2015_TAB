@@ -37,7 +37,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     public static MatrixPlatformManager instance;
     public MatrixPlatformManager()
     {
-        if (instance != null) throw new InvalidOperationException("There can be only one MatrixPlatformManager");
+        //if (instance != null) throw new InvalidOperationException("There can be only one MatrixPlatformManager");
         instance = this;
     }
 
