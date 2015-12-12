@@ -14,7 +14,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     // Animation information
     private bool animationBusy = false;
     private float animationTimestep = 0;
-    private float animationLength = 2;
+    private float animationLength = 0.5f;
     private Vector3 animationOldPosition;
     private Vector3 animationOldLocalScale;
     private Quaternion animationOldLocalRotation;
@@ -37,7 +37,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     public static MatrixPlatformManager instance;
     public MatrixPlatformManager()
     {
-        if (instance != null) throw new InvalidOperationException("There can be only one MatrixPlatformManager");
+        //if (instance != null) throw new InvalidOperationException("There can be only one MatrixPlatformManager");
         instance = this;
     }
 
@@ -63,7 +63,7 @@ public class MatrixPlatformManager : MonoBehaviour {
         // Find out if we need any new catchers
         foreach(var platform in matrixPlatforms)
         {
-            if (OnScreen(platform.Pivot) && !HasCatcherFor(platform.Pivot))
+            if (OnScreen(platform.Pivot) && !HasCatcherFor(platform))
             {
                 var dropperGO = Instantiate(dropperPrefab);
                 dropperGO.transform.SetParent(mainCanvas.transform);
@@ -159,7 +159,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     /// </summary>
     /// <param name="platform"></param>
     /// <returns></returns>
-    bool HasCatcherFor(GameObject platform)
+    bool HasCatcherFor(MatrixPlatform platform)
     {
         return platformCatchers.Any(p => p.Platform == platform);
     }
