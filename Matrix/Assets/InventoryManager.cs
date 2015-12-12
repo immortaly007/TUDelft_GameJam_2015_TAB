@@ -13,6 +13,19 @@ public class InventoryManager : MonoBehaviour {
     public GameObject buttonPrefab;
     public GameObject buttonPanel;
 
+	public GameObject thePivot;
+
+	private bool animationBusy = false;
+	private float  animationTimestep = 0;
+	private float  animationLength = 2;
+	private Vector3 animationOldPosition;
+	private Vector3 animationOldLocalScale;
+	private Quaternion animationOldLocalRotation;
+
+	private GameObject animationTarget;
+	private MatrixModifier animationModifier;
+
+
     // Singleton stuff
     public static InventoryManager instance;
     public InventoryManager()
@@ -25,13 +38,60 @@ public class InventoryManager : MonoBehaviour {
         AddMatrixModifier(new RotationMatrixModifier(90));
         AddMatrixModifier(new TranslationMatrixModifier(new Vector2(-2, 0)));
 	}
-	
+
+	void startAnimation(GameObject target, MatrixModifier animation, Transform oldTransform) {
+		animationTarget = target;
+		animationModifier = animation;
+		animationOldPosition = oldTransform.localPosition;
+		animationOldLocalScale = oldTransform.localScale;
+		animationOldLocalRotation = oldTransform.localRotation;
+		animationBusy = true;
+		animationTimestep = 0.0f;
+	}
+
+	void doAnimation() {
+		MatrixModifier temp = animationModifier.Clone(); // get the animation
+		float ratio = animationTimestep/animationLength;
+
+		Debug.Log("ratio " + ratio);
+
+		if (ratio > 1) {
+			ratio = 1;
+			animationBusy = false;
+		}
+		temp.Tween(ratio);
+
+		animationTarget.transform.localPosition = animationOldPosition;
+		animationTarget.transform.localScale = animationOldLocalScale;
+		animationTarget.transform.localRotation = animationOldLocalRotation;
+
+		temp.Apply (animationTarget.transform);
+		animationTimestep += Time.deltaTime;
+		if (animationBusy == false) {
+			Debug.Log ("animation done");
+			animationModifier = null;
+			animationTarget = null;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("space"))
-        {
-            AddMatrixModifier(new RotationMatrixModifier(90));
-        }
+
+		if (this.animationBusy == false) { // if currently not animating anything
+			if (Input.GetKeyDown ("space")) {
+        
+				MatrixModifier koe = (new TranslationMatrixModifier(new Vector2(-2,2)));
+
+				Debug.Log ("starting animation");
+				startAnimation (thePivot, koe, thePivot.transform);
+
+				//koe.Apply (thePivot.transform);
+			}
+		} else { // animate current thingy
+			
+			doAnimation();
+
+		}
 	
 	}
 

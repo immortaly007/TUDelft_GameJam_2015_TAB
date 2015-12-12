@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UIProjector : MonoBehaviour {
 
-    public Camera camera;
+    //public Camera camera;
 
 
 	// Use this for initialization
