@@ -40,8 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
-  matrixPlatforms:
-  - {fileID: 0}
+  matrixPlatforms: []
   mainCanvas: {fileID: 0}
   dropperPrefab: {fileID: 177860, guid: 26ef0e7fa70c4c249abb46fe9b78885e, type: 2}
 --- !u!1001 &100100000
