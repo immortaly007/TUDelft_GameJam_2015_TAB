@@ -6,18 +6,29 @@ using System;
 
 public class MatrixPlatformManager : MonoBehaviour {
     public Camera mainCam;
-    public List<GameObject> matrixPlatforms = new List<GameObject>();
+    public List<MatrixPlatform> matrixPlatforms = new List<MatrixPlatform>();
     public Canvas mainCanvas;
 
     public GameObject dropperPrefab;
 
+    // Animation information
+    private bool animationBusy = false;
+    private float animationTimestep = 0;
+    private float animationLength = 2;
+    private Vector3 animationOldPosition;
+    private Vector3 animationOldLocalScale;
+    private Quaternion animationOldLocalRotation;
+
+    private GameObject animationTarget;
+    private MatrixModifier animationModifier;
+
     private class PlatformCatcherPair
     {
-        public GameObject Platform { get; set; }
+        public MatrixPlatform Platform { get; set; }
         public GameObject Catcher { get; set; }
 
         public PlatformCatcherPair() { }
-        public PlatformCatcherPair(GameObject platform, GameObject catcher) { Platform = platform; Catcher = catcher; }
+        public PlatformCatcherPair(MatrixPlatform platform, GameObject catcher) { Platform = platform; Catcher = catcher; }
     }
 
 
@@ -41,7 +52,7 @@ public class MatrixPlatformManager : MonoBehaviour {
         for(int i = 0; i < platformCatchers.Count; i++)
         {
             var platformCatcher = platformCatchers[i];
-            if (!OnScreen(platformCatcher.Platform))
+            if (!OnScreen(platformCatcher.Platform.Pivot))
             {
                 Destroy(platformCatcher.Catcher);
                 platformCatchers.RemoveAt(i);
@@ -52,7 +63,7 @@ public class MatrixPlatformManager : MonoBehaviour {
         // Find out if we need any new catchers
         foreach(var platform in matrixPlatforms)
         {
-            if (OnScreen(platform) && !HasCatcherFor(platform))
+            if (OnScreen(platform.Pivot) && !HasCatcherFor(platform.Pivot))
             {
                 var dropperGO = Instantiate(dropperPrefab);
                 dropperGO.transform.SetParent(mainCanvas.transform);
@@ -61,13 +72,76 @@ public class MatrixPlatformManager : MonoBehaviour {
             }
         }
 
+        // Update the catcher positions
         foreach(var platformCatcher in platformCatchers)
         {
-            Vector3 pos = GetScreenPos(platformCatcher.Platform);
+            Vector3 pos = GetScreenPos(platformCatcher.Platform.Pivot);
             var catcherTransform = platformCatcher.Catcher.GetComponent<RectTransform>();
             catcherTransform.position = new Vector3(pos.x, pos.y, 0);
         }
-	}
+
+        // animate current thingy
+        if (animationBusy) DoAnimation();
+
+    }
+
+    void StartAnimation(GameObject target, MatrixModifier animation)
+    {
+        animationTarget = target;
+
+        animationModifier = animation;
+        animationOldPosition = target.transform.localPosition;
+        animationOldLocalScale = target.transform.localScale;
+        animationOldLocalRotation = target.transform.localRotation;
+        animationBusy = true;
+        animationTimestep = 0.0f;
+    }
+
+    void DoAnimation()
+    {
+        MatrixModifier temp = animationModifier.Clone(); // get the animation
+        float ratio = animationTimestep / animationLength;
+
+        Debug.Log("ratio " + ratio);
+
+        if (ratio > 1)
+        {
+            ratio = 1;
+            animationBusy = false;
+        }
+        temp.Tween(ratio);
+
+        animationTarget.transform.localPosition = animationOldPosition;
+        animationTarget.transform.localScale = animationOldLocalScale;
+        animationTarget.transform.localRotation = animationOldLocalRotation;
+
+        temp.Apply(animationTarget.transform);
+        animationTimestep += Time.deltaTime;
+        if (animationBusy == false)
+        {
+            Debug.Log("animation done");
+
+            if (animationModifier is TranslationMatrixModifier)
+            {
+                Vector3 movement = animationTarget.transform.localPosition - animationOldPosition;
+                animationTarget.transform.localPosition = animationOldPosition;
+
+                Transform[] ts = animationTarget.GetComponentsInChildren<Transform>();
+
+                foreach (Transform t in ts)
+                {
+                    if (t == animationTarget.transform) continue;
+                    t.position += movement;
+                }
+
+            }
+
+            animationModifier = null;
+            animationTarget = null;
+
+
+        }
+    }
 
     Vector3 GetScreenPos(GameObject go)
     {
@@ -97,11 +171,24 @@ public class MatrixPlatformManager : MonoBehaviour {
     public void Catch(GameObject catcher, GameObject caughtObject)
     {
         // Find out which platform the catcher belongs to
-        var platform = platformCatchers.FirstOrDefault(p => p.Catcher == catcher);
-        if (platform == null) return; // Can't find the platform
+        var platformCatcher = platformCatchers.FirstOrDefault(p => p.Catcher == catcher);
+        if (platformCatcher == null) return; // Can't find the platform
         Debug.Log("Something was dropped on me");
-        platform.Platform.SetActive(false);
+
+        // Ask the inventory what modifier is on the used button
+        var matrixModifier = InventoryManager.instance.GetMatrixModifierForButton(caughtObject);
+        if (matrixModifier == null) return;
+
+        Debug.Log("starting animation");
+        // Apply the modifier
+        InventoryManager.instance.Consume(matrixModifier);
+        StartAnimation(platformCatcher.Platform.Pivot, matrixModifier);
         // TODO: tell the inventory manager this object has been used
-        
+
+    }
+
+    public void Register(MatrixPlatform platform)
+    {
+        matrixPlatforms.Add(platform);
     }
 }

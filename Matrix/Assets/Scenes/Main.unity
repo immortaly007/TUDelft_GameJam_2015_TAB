@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 350796678}
   m_Layer: 0
-  m_Name: Eigenlijke pivot
+  m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,8 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 213843655}
-  matrixPlatforms:
-  - {fileID: 1594819909}
+  matrixPlatforms: []
   mainCanvas: {fileID: 242463453}
   dropperPrefab: {fileID: 177860, guid: 26ef0e7fa70c4c249abb46fe9b78885e, type: 2}
 --- !u!4 &779249917
@@ -780,8 +779,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1516924036}
+  - 114: {fileID: 1516924037}
   m_Layer: 0
-  m_Name: MatrixUnit
+  m_Name: MatrixPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -801,10 +801,17 @@ Transform:
   - {fileID: 2118113760}
   m_Father: {fileID: 0}
   m_RootOrder: 11
---- !u!1 &1594819909 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 187676, guid: 1bc7d0796aadca14394566bbce5827db, type: 2}
-  m_PrefabInternal: {fileID: 693842555}
+--- !u!114 &1516924037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516924035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aed4074c9afb4e40ae91037cfdba965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1626164045
 Prefab:
   m_ObjectHideFlags: 0
@@ -898,8 +905,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 2080920062}
   - 33: {fileID: 2080920065}
-  - 65: {fileID: 2080920064}
   - 23: {fileID: 2080920063}
+  - 61: {fileID: 2080920064}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -945,18 +952,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &2080920064
-BoxCollider:
+--- !u!61 &2080920064
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2080920061}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
 --- !u!33 &2080920065
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -976,7 +985,7 @@ GameObject:
   - 135: {fileID: 2118113762}
   - 23: {fileID: 2118113761}
   m_Layer: 0
-  m_Name: Pivot op scherm
+  m_Name: DisplayPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
