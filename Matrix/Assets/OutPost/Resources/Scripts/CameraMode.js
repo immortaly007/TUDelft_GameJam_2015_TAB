@@ -1,8 +1,8 @@
 ﻿#pragma strict
 
-private var motor : CharacterMotor;
+private var motor : UnityEngine.CharacterJoint;
 private var fly : FlyCam;
-private var mouselook : MouseLook;
+//private var mouselook : MouseLook;
 
 
 
@@ -11,7 +11,7 @@ function Start () {
 }
 
 function Update () {
-
+	/*
 	if(Input.GetMouseButtonDown(1)){
 		motor = GetComponent(CharacterMotor);
 		fly = GetComponent(FlyCam);
@@ -25,4 +25,5 @@ function Update () {
 		
 		
 	}
+	*/
 }
