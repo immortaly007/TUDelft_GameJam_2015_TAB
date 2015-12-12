@@ -41,6 +41,7 @@ public class InventoryManager : MonoBehaviour {
 
 	void startAnimation(GameObject target, MatrixModifier animation, Transform oldTransform) {
 		animationTarget = target;
+
 		animationModifier = animation;
 		animationOldPosition = oldTransform.localPosition;
 		animationOldLocalScale = oldTransform.localScale;
@@ -69,8 +70,25 @@ public class InventoryManager : MonoBehaviour {
 		animationTimestep += Time.deltaTime;
 		if (animationBusy == false) {
 			Debug.Log ("animation done");
+
+			if (animationModifier is TranslationMatrixModifier) {
+				Vector3 movement = animationTarget.transform.localPosition - animationOldPosition;
+				animationTarget.transform.localPosition = animationOldPosition;
+
+				Transform[] ts = animationTarget.GetComponentsInChildren<Transform>();
+
+				foreach (Transform t in ts) {
+					if (t == animationTarget.transform)
+						continue;
+					t.localPosition += movement;
+				}
+
+			}
+
 			animationModifier = null;
 			animationTarget = null;
+
+
 		}
 	}
 
