@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour {
         var modifierAndButton = modifiers.FirstOrDefault(m => m.Modifier == modifier);
         if (modifierAndButton == null) return;
         modifiers.Remove(modifierAndButton);
-        Destroy(modifierAndButton.Button);
+        Destroy(modifierAndButton.Button.gameObject);
 
     }
 }
