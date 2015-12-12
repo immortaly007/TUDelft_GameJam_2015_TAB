@@ -189,6 +189,7 @@ public class MatrixPlatformManager : MonoBehaviour {
 
     public void Register(MatrixPlatform platform)
     {
+        if (platform == null) return;
         matrixPlatforms.Add(platform);
     }
 }
