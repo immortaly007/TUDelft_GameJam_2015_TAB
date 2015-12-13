@@ -3703,7 +3703,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 489608, guid: 0d36181ce7b49464381f657530e7863c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 72.63
+      value: 104.65
       objectReference: {fileID: 0}
     - target: {fileID: 489608, guid: 0d36181ce7b49464381f657530e7863c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4214,6 +4214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236b0e5c7989f004b8a8618f257426f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPressButtonTime: 0.5
 --- !u!114 &1383079306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4451,6 +4452,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1516924036}
   - 114: {fileID: 1516924037}
+  - 114: {fileID: 1516924038}
   m_Layer: 0
   m_Name: MatrixPlatform
   m_TagString: Untagged
@@ -4483,6 +4485,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aed4074c9afb4e40ae91037cfdba965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1516924038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516924035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae32065e316ea4e4ca87bbef2b3b39e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
 --- !u!1001 &1517415843
 Prefab:
   m_ObjectHideFlags: 0
@@ -5061,7 +5075,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 489608, guid: 0d36181ce7b49464381f657530e7863c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 76.4
+      value: 108.42
       objectReference: {fileID: 0}
     - target: {fileID: 489608, guid: 0d36181ce7b49464381f657530e7863c, type: 2}
       propertyPath: m_LocalPosition.y
