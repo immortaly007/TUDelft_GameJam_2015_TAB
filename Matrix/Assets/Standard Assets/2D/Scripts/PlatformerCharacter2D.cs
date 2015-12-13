@@ -18,7 +18,16 @@ namespace UnityStandardAssets._2D
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         //private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
-        private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+
+        private bool FacingRight
+        {
+            get
+            {
+                int angle = ((int)(mymodel.GetComponent<Transform>().localEulerAngles.y)) % 360;
+                return angle > 45 && angle < 225;
+            }
+        }
+        //private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
 		public GameObject mymodel;
 
@@ -55,11 +64,6 @@ namespace UnityStandardAssets._2D
             }
 
 			anim.SetBool("grounded",m_Grounded);
-
-
-
-
-
         }
 
 
@@ -97,13 +101,13 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
                 // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight)
+                if (move > 0 && !FacingRight)
                 {
                     // ... flip the player.
                     Flip();
                 }
                 // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && m_FacingRight)
+                else if (move < 0 && FacingRight)
                 {
                     // ... flip the player.
                     Flip();
@@ -131,7 +135,7 @@ namespace UnityStandardAssets._2D
         private void Flip()
         {
             // Switch the way the player is labelled as facing.
-            m_FacingRight = !m_FacingRight;
+            //m_FacingRight = !m_FacingRight;
 
 			mymodel.GetComponent<Transform>().Rotate(new Vector3 (0, 180, 0));
 
