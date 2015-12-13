@@ -3,11 +3,12 @@ using System.Collections;
 using System;
 
 public class CheckpointManager : MonoBehaviour {
-
+    [Serializable]
     public struct CheckPoint
     {
-        public Vector3 Position { get; set; }
-        public Quaternion Rotation { get; set; }
+        public Vector3 postion;
+        public Quaternion rotation;
+        public bool isActive;
     }
 
     public CheckPoint LastCheckpoint = new CheckPoint();
@@ -21,13 +22,14 @@ public class CheckpointManager : MonoBehaviour {
 
     public void SetCheckpoint(Transform transform)
     {
-        LastCheckpoint.Position = transform.position;
-        LastCheckpoint.Rotation = transform.rotation;
+        LastCheckpoint.postion = transform.position;
+        LastCheckpoint.rotation = transform.rotation;
+        LastCheckpoint.isActive = true;
     }
 
     public void RestoreLastCheckpoint(Transform transform)
     {
-        transform.position = LastCheckpoint.Position;
-
+        transform.position = LastCheckpoint.postion;
+        transform.rotation = LastCheckpoint.rotation;
     }
 }
