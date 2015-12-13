@@ -9,8 +9,11 @@ public class MatrixPlatformManager : MonoBehaviour {
     public Camera mainCam;
     public List<MatrixPlatform> matrixPlatforms = new List<MatrixPlatform>();
     public Canvas mainCanvas;
+    public Vector2 onScreenOffset = new Vector2(10, 5);
 
     public GameObject dropperPrefab;
+    public GameObject visualPivotPrefab;
+    public GameObject moveablePanelPrefab;
 
     // Animation information
     private bool animationBusy = false;
@@ -236,7 +239,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     bool OnScreen(GameObject go)
     {
         Vector3 pos = GetScreenPos(go);
-        return pos.x < Screen.width && pos.x > 0 && pos.y < Screen.height && pos.y > 0;
+        return pos.x < Screen.width + onScreenOffset.x && pos.x > -onScreenOffset.x && pos.y < Screen.height + onScreenOffset.y && pos.y > -onScreenOffset.y;
     }
 
     /// <summary>

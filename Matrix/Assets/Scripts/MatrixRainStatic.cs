@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 public class MatrixRainStatic : MonoBehaviour {
     // Single character settings
-    public Gradient gradient;
     public float averageSymbolSwitchTime = 5f;
-    public List<char> symbols = new List<char>() { '0', '1' };
+    public List<Sprite> symbols = new List<Sprite>();
     public float maxTimeAlive = 3f;
 
     // Spawner settings
@@ -39,7 +38,6 @@ public class MatrixRainStatic : MonoBehaviour {
                     var textMesh = symbolGO.GetComponent<TextMesh>();
                     symbolGO.transform.SetParent(transform);
                     DigitalRainSymbol symbol = symbolGO.GetComponent<DigitalRainSymbol>();
-                    symbol.gradient = gradient;
                     symbol.averageSymbolSwitchTime = averageSymbolSwitchTime;
                     symbol.symbols = symbols;
                     symbol.maxTimeAlive = maxTimeAlive;
