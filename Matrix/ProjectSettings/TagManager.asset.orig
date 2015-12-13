@@ -8,7 +8,10 @@ TagManager:
   - CheckPoint
   - DeathCheck
   - StoreOnCheckpoint
+<<<<<<< HEAD
+=======
   - EndOfLevel
+>>>>>>> 506e664c4b1331a6746af73ffe706452250288d0
   layers:
   - Default
   - TransparentFX
