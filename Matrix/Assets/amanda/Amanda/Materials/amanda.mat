@@ -38,16 +38,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _normal
+          name: _specular
         second:
-          m_Texture: {fileID: 2800000, guid: edb5a401e21c8e043ae86d78919e8582, type: 3}
+          m_Texture: {fileID: 2800000, guid: e6ba43f4b5116d546878643a313c8481, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _specular
+          name: _normal
         second:
-          m_Texture: {fileID: 2800000, guid: e6ba43f4b5116d546878643a313c8481, type: 3}
+          m_Texture: {fileID: 2800000, guid: edb5a401e21c8e043ae86d78919e8582, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -68,21 +68,21 @@ Material:
       data:
         first:
           name: _gloss
-        second: 0.3589744
+        second: .358974397
       data:
         first:
           name: _eyefresnel
-        second: 0.197
+        second: .196999997
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+        second: {r: .150000006, g: .150000006, b: .150000006, a: 1}
       data:
         first:
           name: _subcolor
-        second: {r: 0.41176468, g: 0.21298178, b: 0, a: 1}
+        second: {r: .411764681, g: .212981775, b: 0, a: 1}
       data:
         first:
           name: _ambientskin
-        second: {r: 0.4852941, g: 0.4852941, b: 0.4852941, a: 1}
+        second: {r: .485294104, g: .485294104, b: .485294104, a: 1}

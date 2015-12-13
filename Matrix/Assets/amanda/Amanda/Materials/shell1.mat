@@ -90,11 +90,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 0.5
-      data:
-        first:
-          name: _Parallax
-        second: 0.02
+        second: .5
       data:
         first:
           name: _ZWrite
@@ -102,11 +98,15 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.591
+        second: .591000021
       data:
         first:
           name: _BumpScale
         second: 1
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
       data:
         first:
           name: _OcclusionStrength
@@ -126,7 +126,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.359
+        second: .358999997
       data:
         first:
           name: _EmissionScaleUI

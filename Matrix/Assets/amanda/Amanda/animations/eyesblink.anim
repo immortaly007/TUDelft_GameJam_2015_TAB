@@ -12,7 +12,6 @@ AnimationClip:
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
   m_CompressedRotationCurves: []
-  m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves:
@@ -24,44 +23,43 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.78
+      - time: .779999971
         value: 0
-        inSlope: 249.99994
-        outSlope: 249.99994
+        inSlope: 249.999939
+        outSlope: 249.999939
         tangentMode: 10
-      - time: 0.98
+      - time: .980000019
         value: 100
-        inSlope: -0.00015258789
-        outSlope: -0.00015258789
+        inSlope: -.000152587891
+        outSlope: -.000152587891
         tangentMode: 10
-      - time: 1.18
+      - time: 1.17999995
         value: 0
-        inSlope: -250.00009
-        outSlope: -250.00009
+        inSlope: -250.000092
+        outSlope: -250.000092
         tangentMode: 10
-      - time: 4.14
+      - time: 4.13999987
         value: 0
-        inSlope: 277.7773
-        outSlope: 277.7773
+        inSlope: 277.777313
+        outSlope: 277.777313
         tangentMode: 10
-      - time: 4.32
+      - time: 4.32000017
         value: 100
         inSlope: 50.504364
         outSlope: 50.504364
         tangentMode: 10
-      - time: 4.54
+      - time: 4.53999996
         value: 0
-        inSlope: -227.27295
-        outSlope: -227.27295
+        inSlope: -227.272949
+        outSlope: -227.272949
         tangentMode: 10
-      - time: 7.2
+      - time: 7.19999981
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: blendShape.eyesclosed
     path: 
     classID: 137
@@ -77,14 +75,11 @@ AnimationClip:
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
-    m_AdditiveReferencePoseClip: {fileID: 0}
-    m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 7.2
+    m_StopTime: 7.19999981
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
-    m_HasAdditiveReferencePose: 0
     m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
@@ -104,44 +99,43 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.78
+      - time: .779999971
         value: 0
-        inSlope: 249.99994
-        outSlope: 249.99994
+        inSlope: 249.999939
+        outSlope: 249.999939
         tangentMode: 10
-      - time: 0.98
+      - time: .980000019
         value: 100
-        inSlope: -0.00015258789
-        outSlope: -0.00015258789
+        inSlope: -.000152587891
+        outSlope: -.000152587891
         tangentMode: 10
-      - time: 1.18
+      - time: 1.17999995
         value: 0
-        inSlope: -250.00009
-        outSlope: -250.00009
+        inSlope: -250.000092
+        outSlope: -250.000092
         tangentMode: 10
-      - time: 4.14
+      - time: 4.13999987
         value: 0
-        inSlope: 277.7773
-        outSlope: 277.7773
+        inSlope: 277.777313
+        outSlope: 277.777313
         tangentMode: 10
-      - time: 4.32
+      - time: 4.32000017
         value: 100
         inSlope: 50.504364
         outSlope: 50.504364
         tangentMode: 10
-      - time: 4.54
+      - time: 4.53999996
         value: 0
-        inSlope: -227.27295
-        outSlope: -227.27295
+        inSlope: -227.272949
+        outSlope: -227.272949
         tangentMode: 10
-      - time: 7.2
+      - time: 7.19999981
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: blendShape.eyesclosed
     path: 
     classID: 137

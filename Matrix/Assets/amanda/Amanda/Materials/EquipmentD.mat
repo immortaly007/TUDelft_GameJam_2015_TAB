@@ -61,13 +61,13 @@ Material:
       data:
         first:
           name: _gloss
-        second: 0.619
+        second: .619000018
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+        second: {r: .150000006, g: .150000006, b: .150000006, a: 1}
       data:
         first:
           name: _illumcolor
-        second: {r: 1, g: 0.2850913, b: 0.022058845, a: 1}
+        second: {r: 1, g: .285091311, b: .0220588446, a: 1}

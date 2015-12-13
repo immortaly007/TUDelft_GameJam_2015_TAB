@@ -38,25 +38,25 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _normal
+          name: _specular
         second:
-          m_Texture: {fileID: 2800000, guid: e2fa938bf57d0d5468fca677850ed8dd, type: 3}
+          m_Texture: {fileID: 2800000, guid: 204feb17a1aa02c4eaad79c2235ebd4c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _specular
+          name: _normal
         second:
-          m_Texture: {fileID: 2800000, guid: 204feb17a1aa02c4eaad79c2235ebd4c, type: 3}
+          m_Texture: {fileID: 2800000, guid: e2fa938bf57d0d5468fca677850ed8dd, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _gloss
-        second: 0.354
+        second: .354000002
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+        second: {r: .150000006, g: .150000006, b: .150000006, a: 1}
