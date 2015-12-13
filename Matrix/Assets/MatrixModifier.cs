@@ -61,7 +61,7 @@ class RotationMatrixModifier : MatrixModifier
 
 class TranslationMatrixModifier : MatrixModifier
 {
-    Vector2 translation;
+    public Vector2 translation;
 
     public TranslationMatrixModifier(Vector2 translation)
     {

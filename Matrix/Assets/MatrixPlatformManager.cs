@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityStandardAssets._2D;
 
 public class MatrixPlatformManager : MonoBehaviour {
     public Camera mainCam;
@@ -21,6 +22,10 @@ public class MatrixPlatformManager : MonoBehaviour {
 
     private GameObject animationTarget;
     private MatrixModifier animationModifier;
+
+	private bool moveThePlayer;
+
+	public GameObject player;
 
     [Serializable]
     private class PlatformCatcherPair
@@ -96,6 +101,37 @@ public class MatrixPlatformManager : MonoBehaviour {
         animationOldLocalRotation = target.transform.localRotation;
         animationBusy = true;
         animationTimestep = 0.0f;
+		animationLength = 0.5f;
+
+		if (animation is TranslationMatrixModifier) {
+			TranslationMatrixModifier temp = (TranslationMatrixModifier) animation;
+			float distanceTravel = temp.translation.magnitude;
+			if (distanceTravel > 4) {
+				animationLength = distanceTravel / 8;
+			}
+		}
+
+		moveThePlayer = false;
+
+		if (animation is TranslationMatrixModifier) {
+
+			Debug.Log ("Checking for problems...");
+
+			Transform[] ts = animationTarget.GetComponentsInChildren<Transform>();
+			foreach (Transform t in ts)
+			{
+				bool doSomething = player.GetComponent<PlatformerCharacter2D> ().CheckIfGameObjectIsCollidingWithMe (t.gameObject);
+
+				if (doSomething) {
+
+					moveThePlayer = true;
+
+
+				}
+
+			}
+
+		}
     }
 
     void DoAnimation()
@@ -103,7 +139,7 @@ public class MatrixPlatformManager : MonoBehaviour {
         MatrixModifier temp = animationModifier.Clone(); // get the animation
         float ratio = animationTimestep / animationLength;
 
-        Debug.Log("ratio " + ratio);
+        //Debug.Log("ratio " + ratio);
 
         if (ratio > 1)
         {
@@ -115,6 +151,14 @@ public class MatrixPlatformManager : MonoBehaviour {
         animationTarget.transform.localPosition = animationOldPosition;
         animationTarget.transform.localScale = animationOldLocalScale;
         animationTarget.transform.localRotation = animationOldLocalRotation;
+
+		if (moveThePlayer) {
+			MatrixModifier temp2 = animationModifier.Clone ();
+			temp2.Tween (Time.deltaTime / animationLength);
+			temp2.Apply (player.transform);
+
+			Debug.Log ("MOVE DA PLAYER");
+		}
 
         temp.Apply(animationTarget.transform);
         animationTimestep += Time.deltaTime;
