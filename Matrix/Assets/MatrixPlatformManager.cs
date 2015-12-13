@@ -22,6 +22,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     private GameObject animationTarget;
     private MatrixModifier animationModifier;
 
+    [Serializable]
     private class PlatformCatcherPair
     {
         public MatrixPlatform Platform { get; set; }
