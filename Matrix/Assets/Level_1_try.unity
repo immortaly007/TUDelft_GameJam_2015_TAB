@@ -26921,10 +26921,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 188646913}
-  damping: 1
+  damping: 0.4
   lookAheadFactor: 3
   lookAheadReturnSpeed: 0.5
   lookAheadMoveThreshold: 0.1
+  offset: {x: 0, y: 20, z: 0}
 --- !u!81 &486898531
 AudioListener:
   m_ObjectHideFlags: 0
@@ -26955,7 +26956,7 @@ Transform:
   m_PrefabParentObject: {fileID: 473718, guid: c20b0e1d9dba644cc9c34ed483afc1dc, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 486898528}
-  m_LocalRotation: {x: 0.05817388, y: 0, z: 0, w: 0.9983065}
+  m_LocalRotation: {x: 0.13052621, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 1.9, y: 58.2, z: -5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -43093,6 +43094,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LastCheckpoint:
+  - gameObject: {fileID: 0}
+    postion: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    isActive: 0
+  - gameObject: {fileID: 0}
+    postion: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    isActive: 0
+  - gameObject: {fileID: 0}
     postion: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     isActive: 0
