@@ -12,9 +12,10 @@ GameObject:
   - 23: {fileID: 2364300}
   - 114: {fileID: 11401092}
   - 61: {fileID: 6175124}
+  - 114: {fileID: 11489884}
   m_Layer: 0
   m_Name: MatrixPickup
-  m_TagString: StoreOnCheckpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,18 @@ MonoBehaviour:
   dy: 0
   sx: 0
   sy: 0
+--- !u!114 &11489884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae32065e316ea4e4ca87bbef2b3b39e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -106,7 +119,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: StoreOnCheckpoint
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

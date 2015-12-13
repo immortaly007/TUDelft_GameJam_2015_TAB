@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 424726}
   - 114: {fileID: 11417502}
+  - 114: {fileID: 11440674}
   m_Layer: 0
   m_Name: MatrixPlatform
   m_TagString: StoreOnCheckpoint
@@ -209,6 +210,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aed4074c9afb4e40ae91037cfdba965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11440674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae32065e316ea4e4ca87bbef2b3b39e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
 --- !u!135 &13586160
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -231,6 +244,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: StoreOnCheckpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -7,7 +7,6 @@ TagManager:
   - DeathZone
   - CheckPoint
   - DeathCheck
-  - StoreOnCheckpoint
   layers:
   - Default
   - TransparentFX

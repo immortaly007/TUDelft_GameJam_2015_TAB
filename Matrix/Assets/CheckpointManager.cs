@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class CheckpointManager : MonoBehaviour {
     [Serializable]
@@ -30,7 +31,9 @@ public class CheckpointManager : MonoBehaviour {
     public void SetCheckpoint()
     {
         LastCheckpoint.Clear();
-        var gos = GameObject.FindGameObjectsWithTag("StoreOnCheckpoint");
+        var gos = FindObjectsOfType<GameObjectFlags>()
+            .Where(f => (f.flags & GameObjectFlags.MatrixFlags.StoreOnCheckpoint) == GameObjectFlags.MatrixFlags.StoreOnCheckpoint)
+            .Select(f => f.gameObject);
 
         foreach(var go in gos)
         {
@@ -55,7 +58,7 @@ public class CheckpointManager : MonoBehaviour {
         LastCheckpoint.Add(state);
 
         // Find the children and store their states
-        for (int i = 0; i < go.transform.GetChildCount(); i++)
+        for (int i = 0; i < go.transform.childCount; i++)
             StoreState(go.transform.GetChild(i).gameObject);
     }
 
@@ -70,6 +73,14 @@ public class CheckpointManager : MonoBehaviour {
     private void RestoreState(ObjectState state)
     {
         GameObject go = state.gameObject;
+        // If the gameobject has been destroyed, we can't restore it
+        if (go == null)
+        {
+            Debug.LogWarning("Some GameObject can't be restored because it has been destroyed.");
+            return;
+        }
+
+        // Otherwise, we can :)
         go.SetActive(state.isActive);
         go.transform.position = state.postion;
         go.transform.rotation = state.rotation;
