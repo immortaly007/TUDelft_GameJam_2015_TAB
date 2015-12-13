@@ -7,10 +7,10 @@ public class DeathChecker : MonoBehaviour {
     {
         // Check if the player died
         if (other.gameObject.tag == "DeathCheck" || other.gameObject.tag == "DeathZone")
-            CheckpointManager.Instance.RestoreLastCheckpoint(transform);
+            CheckpointManager.Instance.RestoreLastCheckpoint();
 
         if (other.gameObject.tag == "CheckPoint")
-            CheckpointManager.Instance.SetCheckpoint(transform);
+            CheckpointManager.Instance.SetCheckpoint();
 
     }
 }
