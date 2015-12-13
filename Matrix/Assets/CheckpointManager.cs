@@ -4,7 +4,13 @@ using System;
 
 public class CheckpointManager : MonoBehaviour {
 
-    public Checkpoint LastCheckpoint;
+    public struct CheckPoint
+    {
+        public Vector3 Position { get; set; }
+        public Quaternion Rotation { get; set; }
+    }
+
+    public CheckPoint LastCheckpoint = new CheckPoint();
 
     public static CheckpointManager Instance { get; private set; }
     public CheckpointManager()
@@ -13,8 +19,15 @@ public class CheckpointManager : MonoBehaviour {
         Instance = this;
     }
 
-    public void RegisterCheckpoint(Checkpoint checkpoint)
+    public void SetCheckpoint(Transform transform)
     {
-        LastCheckpoint = checkpoint;
+        LastCheckpoint.Position = transform.position;
+        LastCheckpoint.Rotation = transform.rotation;
+    }
+
+    public void RestoreLastCheckpoint(Transform transform)
+    {
+        transform.position = LastCheckpoint.Position;
+
     }
 }
