@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11426904}
   - 114: {fileID: 11475708}
   - 61: {fileID: 6146524}
-  - 114: {fileID: 11400036}
+  - 114: {fileID: 11401054}
   m_Layer: 0
   m_Name: Neo
   m_TagString: Player
@@ -198,7 +198,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.68}
---- !u!114 &11400036
+--- !u!114 &11401054
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 132660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c411a5bb0e13214e9c50ced05b205b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 236b0e5c7989f004b8a8618f257426f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11426904
