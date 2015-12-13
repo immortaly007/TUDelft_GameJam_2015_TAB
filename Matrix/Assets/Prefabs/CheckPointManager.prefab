@@ -39,17 +39,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c746e5e70814784da1f52c57e4496c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastCheckpoint:
-    postion: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    isActive: 0
+  LastCheckpoint: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: LastCheckpoint.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192060}
