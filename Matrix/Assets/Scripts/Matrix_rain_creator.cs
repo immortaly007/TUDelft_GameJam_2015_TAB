@@ -7,7 +7,7 @@ public class Matrix_rain_creator : MonoBehaviour {
     public GameObject symbolPrefab;
     public Gradient gradient;
     public float averageSymbolSwitchTime = 10f;
-    public List<char> symbols = new List<char>() { '0', '1' };
+    public List<Sprite> symbols = new List<Sprite>();
     public float maxTimeAlive = 3f;
 
     // Raindrop settings

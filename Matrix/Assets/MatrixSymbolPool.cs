@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 public class MatrixSymbolPool : MonoBehaviour {
     public GameObject matrixSymbolPrefab;
+    public Gradient gradient;
     public int initialPoolSize = 1000;
 
     private Queue<GameObject> matrixSymbolPool = new Queue<GameObject>();
+    private Color[] gradientCache = new Color[255];
 
     public static MatrixSymbolPool instance;
     
@@ -21,6 +23,18 @@ public class MatrixSymbolPool : MonoBehaviour {
         {
             Create();
         }
+
+        // Create the gradient cache
+        for (int i = 0; i < gradientCache.Length; i++)
+        {
+            float time = (float)i / (float)gradientCache.Length;
+            gradientCache[i] = gradient.Evaluate(time);
+        }
+    }
+
+    public Color EvaluateGradient(float t)
+    {
+        return gradientCache[(int)(t * (float)gradientCache.Length)];
     }
 
     private void Create()
@@ -45,7 +59,7 @@ public class MatrixSymbolPool : MonoBehaviour {
     public void Put(GameObject symbol)
     {
         //symbol.SetActive(false);
-        symbol.transform.parent.SetParent(transform);
+        symbol.transform.SetParent(transform);
         symbol.transform.localPosition = Vector3.zero;
         matrixSymbolPool.Enqueue(symbol);
     }
