@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Matrix_rain_creator : MonoBehaviour {
 
@@ -11,8 +12,8 @@ public class Matrix_rain_creator : MonoBehaviour {
     private int amount;
     private int speed;
     private System.Random rnd = new System.Random();
-    public GameObject meshRenderer_0;
-    public GameObject meshRenderer_1;
+    public List<Char> symbols = new List<Char>() { '0', '1' };
+    public GameObject symbolPrefab;
     public int max_length_of_chain;
 
 	// Use this for initialization
@@ -20,7 +21,7 @@ public class Matrix_rain_creator : MonoBehaviour {
     {
         //timeAlive = UnityEngine.Random.Range(0f, 3f);
         offset = new Vector3 (0.0f,-0.2f,0f);
-        position = new Vector3(0f, 0f, 0f);
+        position = new Vector3(0, 0, 0);
         max_length_of_chain = Math.Max(max_length_of_chain, 5);
         amount = rnd.Next(5, max_length_of_chain);
         speed = rnd.Next(10, 30);
@@ -31,10 +32,11 @@ public class Matrix_rain_creator : MonoBehaviour {
 
         if (timePast >= 0.1/speed)
         {
-            if (rnd.NextDouble() > 0.5)
-                Instantiate(meshRenderer_0, transform.position + position + offset, Quaternion.identity);
-            else
-                Instantiate(meshRenderer_1, transform.position + position + offset, Quaternion.identity);
+            float probability = 1f / (float)symbols.Count;
+            var symbolChar = symbols[(int)(rnd.NextDouble() / probability)];
+            var symbolGO = (GameObject)Instantiate(symbolPrefab, transform.position + position + offset, Quaternion.identity);
+            var textMesh = symbolGO.GetComponent<TextMesh>();
+            textMesh.text = symbolChar.ToString();
 
             position += offset;
 
