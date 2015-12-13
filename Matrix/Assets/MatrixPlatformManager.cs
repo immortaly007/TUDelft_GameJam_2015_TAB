@@ -166,6 +166,39 @@ public class MatrixPlatformManager : MonoBehaviour {
         {
             Debug.Log("animation done");
 
+			int ti = 0;
+			Transform[] ts = animationTarget.GetComponentsInChildren<Transform>();
+
+
+
+			Vector3[] newpos = new Vector3[ts.Length];
+			Quaternion[] newrot = new Quaternion[ts.Length];
+			Vector3[] newscale = new Vector3[ts.Length];
+
+			foreach (Transform t in ts)
+			{
+				if (t == animationTarget.transform) continue;
+				newpos[ti] = t.position;
+				newscale [ti] = t.lossyScale;
+				newrot [ti] = t.rotation;
+				ti++;
+			}
+
+			animationTarget.transform.localPosition = new Vector3 (0, 0, 0);
+			animationTarget.transform.localRotation = Quaternion.identity;
+			animationTarget.transform.localScale = new Vector3 (1, 1, 1);
+
+			ti = 0;
+			foreach (Transform t in ts) {
+				if (t == animationTarget.transform) continue;
+				t.position = newpos [ti];
+				t.localScale = newscale [ti];
+				t.localRotation = newrot [ti];
+				ti++;
+			}
+
+			/*
+
             if (animationModifier is TranslationMatrixModifier)
             {
                 Vector3 movement = animationTarget.transform.localPosition - animationOldPosition;
@@ -180,6 +213,12 @@ public class MatrixPlatformManager : MonoBehaviour {
                 }
 
             }
+
+			if (animationModifier is ScalingMatrixModifier) {
+
+				Vector3 temp = transform.lossyScale;
+
+			}*/
 
             animationModifier = null;
             animationTarget = null;
