@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a348e0bc84be13d44b9c993b7bd83e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer_0: {fileID: 180686, guid: dd594af0d00e8bd47aad33fba771f948, type: 2}
-  meshRenderer_1: {fileID: 108028, guid: 78604bc0728c4f144a4a5026f9726c25, type: 2}
+  symbols: 30003100
+  symbolPrefab: {fileID: 180686, guid: dd594af0d00e8bd47aad33fba771f948, type: 2}
   max_length_of_chain: 16
 --- !u!1001 &100100000
 Prefab:
@@ -61,6 +61,10 @@ Prefab:
       propertyPath: max_length_of_chain
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: symbolPrefab
+      value: 
+      objectReference: {fileID: 180686, guid: dd594af0d00e8bd47aad33fba771f948, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124028}
