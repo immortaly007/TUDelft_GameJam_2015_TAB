@@ -17,7 +17,8 @@ public class InventoryManager : MonoBehaviour {
     }
     private List<ModifierAndButton> modifiers = new List<ModifierAndButton>();
 
-    public GameObject buttonPrefab;
+    public GameObject buttonPrefabRotation;
+	public GameObject buttonPrefabOther;
     public GameObject buttonPanel;
 
 	public GameObject thePivot;
@@ -62,12 +63,23 @@ public class InventoryManager : MonoBehaviour {
 
     public void AddMatrixModifier(MatrixModifier modifier)
     {
-        var buttonGO = Instantiate(buttonPrefab);
+
+		GameObject buttonGO; 
+
+
+		if (modifier is RotationMatrixModifier) {
+			buttonGO = Instantiate(buttonPrefabRotation);
+		} else {
+			buttonGO = Instantiate(buttonPrefabOther);
+		}
+
+
         buttonGO.transform.SetParent(buttonPanel.transform);
         var button = buttonGO.GetComponent<Button>();
 
-        modifiers.Add(new ModifierAndButton(modifier, button));
-		buttonGO.GetComponentInChildren<Text> ().text = modifier.getText();
+		modifiers.Add(new ModifierAndButton(modifier, button));
+        
+		modifier.ApplyToButton (buttonGO.GetComponent<MatrixGetTextFields> ());
         
     }
 

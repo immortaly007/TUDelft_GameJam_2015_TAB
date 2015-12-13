@@ -10,6 +10,7 @@ public interface MatrixModifier
     void Apply(Transform trans);
 	void Tween(float ratio);
 	string getText();
+	void ApplyToButton (MatrixGetTextFields myButton);
 }
 
 class RotationMatrixModifier : MatrixModifier
@@ -40,6 +41,22 @@ class RotationMatrixModifier : MatrixModifier
 		return "Rotate (" + angle + ")";
 	}
 
+	public void ApplyToButton(MatrixGetTextFields myButton) {
+
+		myButton.M00.text = "cos " + angle;
+		myButton.M10.text = "sin " + angle;
+		myButton.M01.text = "sin " + (-angle);
+		myButton.M11.text = "cos " + angle;
+
+
+		/*myButton.M00.text = "cos " + angle;
+		myButton.M10.text = "sin " + angle;
+		myButton.M01.text = "sin " + (-angle);
+		myButton.M11.text = "cos " + angle;
+		myButton.M*/
+
+	}
+
 }
 
 class TranslationMatrixModifier : MatrixModifier
@@ -53,7 +70,7 @@ class TranslationMatrixModifier : MatrixModifier
 
     public void Apply(Transform trans)
     {
-        trans.localPosition = new Vector3(trans.localPosition.x + translation.x, trans.localPosition.y * translation.y, trans.localPosition.z);
+        trans.localPosition = new Vector3(trans.localPosition.x + translation.x, trans.localPosition.y + translation.y, trans.localPosition.z);
     }
 
 	public void Tween(float ratio) {
@@ -69,6 +86,15 @@ class TranslationMatrixModifier : MatrixModifier
 
 	public string getText() {
 		return "Translate (" + translation.x + "," + translation.y + ")";
+	}
+
+	public void ApplyToButton(MatrixGetTextFields myButton) {
+		myButton.M02.text = ((int)Math.Round (translation.x)).ToString();
+		myButton.M12.text = ((int)Math.Round (translation.y)).ToString();
+
+
+
+
 	}
 }
 
@@ -101,5 +127,11 @@ class ScalingMatrixModifier : MatrixModifier
 
 	public string getText() {
 		return "Scale (" + scale.x + "," + scale.y + ")";
+	}
+
+	public void ApplyToButton(MatrixGetTextFields myButton) {
+		myButton.M00.text = ((int)Math.Round (scale.x)).ToString();
+		myButton.M11.text = ((int)Math.Round (scale.y)).ToString();;
+
 	}
 }
