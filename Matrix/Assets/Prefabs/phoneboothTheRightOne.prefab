@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2346876}
   - 61: {fileID: 6131678}
   - 114: {fileID: 11465328}
+  - 114: {fileID: 11432396}
   m_Layer: 0
   m_Name: phoneboothTheRightOne
   m_TagString: Untagged
@@ -53,9 +54,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122662}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -52.1599998, y: -.370000005, z: 1.39999998}
-  m_LocalScale: {x: .0192789752, y: .0165932961, z: .018592542}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: -52.16, y: -0.37, z: 1.4}
+  m_LocalScale: {x: 0.019278975, y: 0.016593296, z: 0.018592542}
   m_Children:
   - {fileID: 449962}
   m_Father: {fileID: 0}
@@ -81,7 +82,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -100,12 +101,13 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122662}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 201.699997}
+  m_Offset: {x: 0, y: 201.7}
   serializedVersion: 2
-  m_Size: {x: 130.919998, y: 427}
+  m_Size: {x: 130.92, y: 427}
 --- !u!61 &6150718
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -113,12 +115,25 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175036}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 20}
+--- !u!114 &11432396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae32065e316ea4e4ca87bbef2b3b39e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
 --- !u!114 &11465328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,7 +152,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: flags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122662}
