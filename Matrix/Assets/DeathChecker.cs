@@ -6,7 +6,7 @@ public class DeathChecker : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player died
-        if (other.gameObject.tag == "DeathZone")
+        if (other.gameObject.tag == "DeathCheck" || other.gameObject.tag == "DeathZone")
             CheckpointManager.Instance.RestoreLastCheckpoint(transform);
 
         if (other.gameObject.tag == "CheckPoint")

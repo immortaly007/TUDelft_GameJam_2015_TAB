@@ -16,7 +16,7 @@ public class CheckpointManager : MonoBehaviour {
     public static CheckpointManager Instance { get; private set; }
     public CheckpointManager()
     {
-        if (Instance != null) throw new InvalidOperationException("Only one instance of CheckpointManager can exist");
+        //if (Instance != null) throw new InvalidOperationException("Only one instance of CheckpointManager can exist");
         Instance = this;
     }
 

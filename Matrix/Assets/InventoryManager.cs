@@ -32,8 +32,8 @@ public class InventoryManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        AddMatrixModifier(new RotationMatrixModifier(90));
-        AddMatrixModifier(new TranslationMatrixModifier(new Vector2(-2, 0)));
+        //AddMatrixModifier(new RotationMatrixModifier(90));
+        //AddMatrixModifier(new TranslationMatrixModifier(new Vector2(-2, 0)));
 	}
 
 
@@ -65,7 +65,9 @@ public class InventoryManager : MonoBehaviour {
         var buttonGO = Instantiate(buttonPrefab);
         buttonGO.transform.SetParent(buttonPanel.transform);
         var button = buttonGO.GetComponent<Button>();
+
         modifiers.Add(new ModifierAndButton(modifier, button));
+		buttonGO.GetComponentInChildren<Text> ().text = modifier.getText();
         
     }
 

@@ -9,6 +9,7 @@ public interface MatrixModifier
 	MatrixModifier Clone();
     void Apply(Transform trans);
 	void Tween(float ratio);
+	string getText();
 }
 
 class RotationMatrixModifier : MatrixModifier
@@ -33,6 +34,10 @@ class RotationMatrixModifier : MatrixModifier
 
 	public MatrixModifier Clone() {
 		return new RotationMatrixModifier (angle);
+	}
+
+	public string getText() {
+		return "Rotate (" + angle + ")";
 	}
 
 }
@@ -61,6 +66,10 @@ class TranslationMatrixModifier : MatrixModifier
 	public MatrixModifier Clone() {
 		return new TranslationMatrixModifier (translation);
 	}
+
+	public string getText() {
+		return "Translate (" + translation.x + "," + translation.y + ")";
+	}
 }
 
 class ScalingMatrixModifier : MatrixModifier
@@ -88,5 +97,9 @@ class ScalingMatrixModifier : MatrixModifier
 
 	public MatrixModifier Clone() {
 		return new ScalingMatrixModifier (scale);
+	}
+
+	public string getText() {
+		return "Scale (" + scale.x + "," + scale.y + ")";
 	}
 }
