@@ -3303,6 +3303,7 @@ GameObject:
   - 114: {fileID: 899499313}
   - 61: {fileID: 899499312}
   - 114: {fileID: 899499311}
+  - 114: {fileID: 899499317}
   m_Layer: 0
   m_Name: Neo
   m_TagString: Player
@@ -3317,7 +3318,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899499309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.2999992, y: -5.30000019, z: 0}
+  m_LocalPosition: {x: -58.5999985, y: .899999976, z: 0}
   m_LocalScale: {x: 2.33999991, y: 2.62999988, z: 1.48000002}
   m_Children:
   - {fileID: 1906311608}
@@ -3416,6 +3417,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -.449999988}
   serializedVersion: 2
   m_Radius: .159999996
+--- !u!114 &899499317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899499309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae32065e316ea4e4ca87bbef2b3b39e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
 --- !u!1 &917950682
 GameObject:
   m_ObjectHideFlags: 0
