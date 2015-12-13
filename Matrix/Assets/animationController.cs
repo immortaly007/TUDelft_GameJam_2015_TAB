@@ -4,6 +4,7 @@ using System.Collections;
 public class animationController : MonoBehaviour {
 
 	public Animator anim;
+	public Rigidbody body;
 	int jumpHash = Animator.StringToHash("jump");
 	int groundedHash = Animator.StringToHash("grounded");
 	//int runStateHash = Animator.StringToHash("Base Layer.Run");
@@ -20,8 +21,6 @@ public class animationController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float move = Input.GetAxis("Horizontal");
-		anim.SetFloat ("speed", Mathf.Abs(move));
 
 	 	
 		//transform.position.x += move * Time.deltaTime;
@@ -29,9 +28,10 @@ public class animationController : MonoBehaviour {
 
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo (0);
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			anim.SetTrigger(jumpHash);
-		}
+		//if (Input.GetKeyDown (KeyCode.Space) ) {
+			//anim.SetTrigger(jumpHash);
+			//transform.position += transform.position + new Vector3(0,0,2f);		
+		//}
 
 	}
 }

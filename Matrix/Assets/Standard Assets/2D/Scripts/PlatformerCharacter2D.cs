@@ -20,6 +20,14 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
+		public GameObject mymodel;
+
+		// 3D model additions
+		public Animator anim;
+		int jumpHash = Animator.StringToHash("jump");
+		int groundedHash = Animator.StringToHash("grounded");
+
+
         private void Awake()
         {
             // Setting up references.
@@ -27,6 +35,9 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             //m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+
+			anim.SetTrigger(groundedHash);
+
         }
 
 
@@ -42,10 +53,17 @@ namespace UnityStandardAssets._2D
                 if (colliders[i].gameObject != gameObject)
                     m_Grounded = true;
             }
+
+			anim.SetBool("grounded",m_Grounded);
+
+
+
+
+
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public bool Move(float move, bool crouch, bool jump)
         {
             //// If crouching, check to see if the character can stand up
             //if (!crouch && m_Anim.GetBool("Crouch"))
@@ -63,6 +81,12 @@ namespace UnityStandardAssets._2D
             //only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl)
             {
+
+				anim.SetBool("jump",false);
+
+				//float move = Input.GetAxis("Horizontal");
+				anim.SetFloat ("speed", Mathf.Abs(move));
+
                 // Reduce the speed if crouching by the crouchSpeed multiplier
                 move = (crouch ? move * m_CrouchSpeed : move);
 
@@ -92,7 +116,15 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 //m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+
+				// Jump animation
+				anim.SetTrigger (jumpHash);
+
+
+				return true;
             }
+			return false;
+
         }
 
 
@@ -101,10 +133,17 @@ namespace UnityStandardAssets._2D
             // Switch the way the player is labelled as facing.
             m_FacingRight = !m_FacingRight;
 
+			mymodel.GetComponent<Transform>().Rotate(new Vector3 (0, 180, 0));
+
+			//transform.Rotate (new Vector3 (0, 180, 0));
+
             // Multiply the player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
+            /*
+			Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+            */
+
         }
     }
 }
