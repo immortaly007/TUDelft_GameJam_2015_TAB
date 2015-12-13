@@ -84,6 +84,7 @@ public class MatrixPlatformManager : MonoBehaviour {
             Vector3 pos = GetScreenPos(platformCatcher.Platform.Pivot);
             var catcherTransform = platformCatcher.Catcher.GetComponent<RectTransform>();
             catcherTransform.position = new Vector3(pos.x, pos.y, 0);
+			catcherTransform.localScale = new Vector3 (1, 1, 1);
         }
 
         // animate current thingy
