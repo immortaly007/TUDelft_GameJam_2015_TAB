@@ -7,25 +7,27 @@ public class DigitalRainSymbol : MonoBehaviour
 
     public Gradient gradient;
     public float averageSymbolSwitchTime = 10f;
-    public List<char> symbols = new List<char>() { '0', '1' };
+    public List<Sprite> symbols = new List<Sprite>();
     public float maxTimeAlive = 3f;
 
     private float timeAlive;
-    private TextMesh textMesh;
+    private SpriteRenderer spriteRenderer;
 
     // Use this for initialization
     public void Reset()
     {
-        textMesh = GetComponent<TextMesh>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         timeAlive = 0.0f;
-        textMesh.color = gradient.Evaluate(0);
+        spriteRenderer.color = gradient.Evaluate(0);
         // Randomly select a symbol
         float symbolProbability = 1f / (float)symbols.Count;
-        char symbolChar = symbols[(int)(Random.value / symbolProbability)];
-        textMesh.text = symbolChar.ToString();
+        var symbolChar = symbols[(int)(Random.value / symbolProbability)];
+        spriteRenderer.sprite = symbolChar;
     }
 
-    void Start() { Reset(); }
+    void Start() {
+        Reset();
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,15 +43,16 @@ public class DigitalRainSymbol : MonoBehaviour
                     float charProb = 1f / (float)(symbols.Count - 1);
                     int symbol = (int)(Random.value / charProb);
                     // Make sure the current symbol can't be selected again
-                    int curSymbol = symbols.IndexOf(textMesh.text[0]);
+                    int curSymbol = symbols.IndexOf(spriteRenderer.sprite);
                     if (symbol >= curSymbol) symbol -= 1;
                     if (symbol < 0) symbol = symbols.Count - 1;
 
                     // Change the symbol
-                    textMesh.text = symbols[symbol].ToString();
+                    spriteRenderer.sprite = symbols[symbol];
                 }
             }
-            textMesh.color = gradient.Evaluate(timeAlive / maxTimeAlive);
+            //textMesh.color = gradient.Evaluate(timeAlive / maxTimeAlive);
+            spriteRenderer.color = MatrixSymbolPool.instance.EvaluateGradient(timeAlive / maxTimeAlive);
         }
         else
             MatrixSymbolPool.instance.Put(this.gameObject);

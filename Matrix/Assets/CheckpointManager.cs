@@ -9,7 +9,8 @@ public class CheckpointManager : MonoBehaviour {
     public struct ObjectState
     {
         public GameObject gameObject;
-        public Vector3 postion;
+        public Vector3 position;
+		public Vector3 scale;
         public Quaternion rotation;
         public bool isActive;
     }
@@ -52,8 +53,9 @@ public class CheckpointManager : MonoBehaviour {
         {
             gameObject = go,
             isActive = go.activeSelf,
-            postion = go.transform.position,
-            rotation = go.transform.rotation
+			position = go.transform.localPosition,
+			scale = go.transform.localScale,
+			rotation = go.transform.localRotation
         };
         LastCheckpoint.Add(state);
 
@@ -82,7 +84,8 @@ public class CheckpointManager : MonoBehaviour {
 
         // Otherwise, we can :)
         go.SetActive(state.isActive);
-        go.transform.position = state.postion;
-        go.transform.rotation = state.rotation;
+		go.transform.localPosition = state.position;
+		go.transform.localScale = state.scale;
+		go.transform.localRotation = state.rotation;
     }
 }
