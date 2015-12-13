@@ -7,6 +7,8 @@ TagManager:
   - DeathZone
   - CheckPoint
   - DeathCheck
+  - StoreOnCheckpoint
+  - EndOfLevel
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - City Block Layer
   - 
   - 
   - 
