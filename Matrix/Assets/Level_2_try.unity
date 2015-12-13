@@ -5003,6 +5003,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matrixSymbolPrefab: {fileID: 0}
+  gradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4294967295
+    key1:
+      serializedVersion: 2
+      rgba: 4294967295
+    key2:
+      serializedVersion: 2
+      rgba: 0
+    key3:
+      serializedVersion: 2
+      rgba: 0
+    key4:
+      serializedVersion: 2
+      rgba: 0
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   initialPoolSize: 1000
 --- !u!1 &417491691
 GameObject:
@@ -7785,7 +7828,10 @@ MonoBehaviour:
   mainCam: {fileID: 1236434380}
   matrixPlatforms: []
   mainCanvas: {fileID: 1424811796}
+  onScreenOffset: {x: 10, y: 5}
   dropperPrefab: {fileID: 177860, guid: 26ef0e7fa70c4c249abb46fe9b78885e, type: 2}
+  visualPivotPrefab: {fileID: 0}
+  moveablePanelPrefab: {fileID: 0}
   player: {fileID: 2075748289}
 --- !u!1 &637622298
 GameObject:
@@ -9427,6 +9473,7 @@ GameObject:
   - 33: {fileID: 804799321}
   - 23: {fileID: 804799320}
   - 61: {fileID: 804799319}
+  - 131: {fileID: 804799322}
   m_Layer: 0
   m_Name: Cube (8)
   m_TagString: Untagged
@@ -9471,7 +9518,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 31ed9b2c9fe5d46359c82dceaec21f95, type: 2}
+  - {fileID: 2100000, guid: 307e4ba8f94ca8d4085a680565eed758, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -9495,6 +9542,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 804799317}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!131 &804799322
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804799317}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 2e4c324f75bbe944c8549b37a8ed6137, type: 3}
+  m_Color: {r: .760784388, g: .760784388, b: .760784388, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &806321092
 GameObject:
   m_ObjectHideFlags: 0
@@ -12706,7 +12772,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 31ed9b2c9fe5d46359c82dceaec21f95, type: 2}
+  - {fileID: 2100000, guid: 307e4ba8f94ca8d4085a680565eed758, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -17748,51 +17814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5872925cfc2c49d40a12f1c821283478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gradient:
-    key0:
-      serializedVersion: 2
-      rgba: 4294967295
-    key1:
-      serializedVersion: 2
-      rgba: 4294967295
-    key2:
-      serializedVersion: 2
-      rgba: 0
-    key3:
-      serializedVersion: 2
-      rgba: 0
-    key4:
-      serializedVersion: 2
-      rgba: 0
-    key5:
-      serializedVersion: 2
-      rgba: 0
-    key6:
-      serializedVersion: 2
-      rgba: 0
-    key7:
-      serializedVersion: 2
-      rgba: 0
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
   averageSymbolSwitchTime: 5
-  symbols: 30003100
+  symbols:
+  - {fileID: 0}
+  - {fileID: 0}
   maxTimeAlive: 3
   spawnSpeed: 0
 --- !u!1 &1470802053
@@ -18159,7 +18184,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 31ed9b2c9fe5d46359c82dceaec21f95, type: 2}
+  - {fileID: 2100000, guid: 307e4ba8f94ca8d4085a680565eed758, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -22718,51 +22743,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5872925cfc2c49d40a12f1c821283478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gradient:
-    key0:
-      serializedVersion: 2
-      rgba: 4294967295
-    key1:
-      serializedVersion: 2
-      rgba: 4294967295
-    key2:
-      serializedVersion: 2
-      rgba: 0
-    key3:
-      serializedVersion: 2
-      rgba: 0
-    key4:
-      serializedVersion: 2
-      rgba: 0
-    key5:
-      serializedVersion: 2
-      rgba: 0
-    key6:
-      serializedVersion: 2
-      rgba: 0
-    key7:
-      serializedVersion: 2
-      rgba: 0
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
   averageSymbolSwitchTime: 5
-  symbols: 30003100
+  symbols:
+  - {fileID: 0}
+  - {fileID: 0}
   maxTimeAlive: 3
   spawnSpeed: 0
 --- !u!1 &1934438260
