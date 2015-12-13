@@ -78,6 +78,8 @@ public class InventoryManager : MonoBehaviour {
         var button = buttonGO.GetComponent<Button>();
 
 		modifiers.Add(new ModifierAndButton(modifier, button));
+
+		buttonGO.GetComponent<MatrixGetTextFields> ().getMyTextFields ();
         
 		modifier.ApplyToButton (buttonGO.GetComponent<MatrixGetTextFields> ());
         

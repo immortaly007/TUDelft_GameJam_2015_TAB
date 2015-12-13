@@ -5310,26 +5310,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 22465014, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22465014, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22465014, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22465014, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: -38.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 22465014, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 22494578, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -5473,14 +5453,6 @@ Prefab:
     - target: {fileID: 22435860, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22465014, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 8.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 22444818, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 120.5
       objectReference: {fileID: 0}
     - target: {fileID: 22438456, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
       propertyPath: m_AnchorMin.y
@@ -8435,10 +8407,6 @@ Transform:
   - {fileID: 1502688086}
   m_Father: {fileID: 1077921585}
   m_RootOrder: 0
---- !u!1 &1562112674 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 148736, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
-  m_PrefabInternal: {fileID: 1029670939}
 --- !u!224 &1562112675 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22440258, guid: fdd55aeaaa1ef864881d34090ca6a70a,
@@ -9822,8 +9790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497831ed4d264cb43bed47f78d5d9121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefabRotation: {fileID: 1562112674}
-  buttonPrefabOther: {fileID: 2070986251}
+  buttonPrefabRotation: {fileID: 148736, guid: fdd55aeaaa1ef864881d34090ca6a70a, type: 2}
+  buttonPrefabOther: {fileID: 116280, guid: 4d0c16bce7efac046bb3ee9caefa9dec, type: 2}
   buttonPanel: {fileID: 627162945}
   thePivot: {fileID: 2132564682}
 --- !u!1 &1902429756
@@ -10432,10 +10400,6 @@ Transform:
   - {fileID: 1198180405}
   m_Father: {fileID: 750915670}
   m_RootOrder: 1
---- !u!1 &2070986251 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 116280, guid: 4d0c16bce7efac046bb3ee9caefa9dec, type: 2}
-  m_PrefabInternal: {fileID: 292013219}
 --- !u!224 &2070986252 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22437910, guid: 4d0c16bce7efac046bb3ee9caefa9dec,

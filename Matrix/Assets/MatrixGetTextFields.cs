@@ -17,7 +17,7 @@ public class MatrixGetTextFields : MonoBehaviour {
 	public Component[] allChildren;
 
 	// Use this for initialization
-	void Start () {
+	public void getMyTextFields () {
 		allChildren = gameObject.GetComponentsInChildren<Text>();
 
 		M00 =  getMyText("M00");
@@ -38,6 +38,7 @@ public class MatrixGetTextFields : MonoBehaviour {
 				return myText;
 			}
 		}
+		Debug.Log ("Could not find child " + childName);
 		return null;
 	}
 	
