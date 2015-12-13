@@ -59,12 +59,26 @@ namespace UnityStandardAssets._2D
             Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
             {
-                if (colliders[i].gameObject != gameObject)
-                    m_Grounded = true;
+				if (colliders [i].gameObject != gameObject) {
+					m_Grounded = true;
+				}
             }
 
 			anim.SetBool("grounded",m_Grounded);
         }
+
+		public bool CheckIfGameObjectIsCollidingWithMe(GameObject target) {
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+			for (int i = 0; i < colliders.Length; i++)
+			{
+				Debug.Log ("Gameobject found: " + colliders [i].gameObject);
+				Debug.Log ("Gameobject to check: " + target);
+				if (colliders [i].gameObject == target) {
+					return true;
+				}
+			}
+			return false;
+		}
 
 
         public bool Move(float move, bool crouch, bool jump)
