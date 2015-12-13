@@ -96,6 +96,12 @@ public class InventoryManager : MonoBehaviour {
         if (modifierAndButton == null) return;
         modifiers.Remove(modifierAndButton);
         Destroy(modifierAndButton.Button.gameObject);
+    }
 
+    public void Clear()
+    {
+        foreach(var modifier in modifiers)
+            Destroy(modifier.Button.gameObject);
+        modifiers.Clear();
     }
 }

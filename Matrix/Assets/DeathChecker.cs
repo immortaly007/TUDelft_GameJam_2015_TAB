@@ -2,15 +2,39 @@
 using System.Collections;
 
 public class DeathChecker : MonoBehaviour {
+    public float deathPressButtonTime = 0.5f;
+    private float deathPressedTime = 0f;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player died
         if (other.gameObject.tag == "DeathCheck" || other.gameObject.tag == "DeathZone")
-            CheckpointManager.Instance.RestoreLastCheckpoint(transform);
+            Die();
 
         if (other.gameObject.tag == "CheckPoint")
-            CheckpointManager.Instance.SetCheckpoint(transform);
+            Checkpoint(other.gameObject);
+       ;
+    }
 
+    void Checkpoint(GameObject checkpoint)
+    {
+        InventoryManager.instance.Clear();
+        CheckpointManager.Instance.SetCheckpoint();
+        checkpoint.SetActive(false);
+    }
+
+    void Die()
+    {
+        InventoryManager.instance.Clear();
+        CheckpointManager.Instance.RestoreLastCheckpoint();
+    }
+
+    void Update()
+    {
+        if (Input.GetButton("Restart")) deathPressedTime += Time.deltaTime;
+        else deathPressedTime = 0;
+
+        if (deathPressedTime > deathPressButtonTime)
+            Die();
     }
 }

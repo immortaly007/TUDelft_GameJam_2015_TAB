@@ -18,6 +18,7 @@ public class PickUpMatrix : MonoBehaviour {
 	public float sy;
 
 	void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag != "Player") return;
 
 		MatrixModifier myMatrix = null;
 		if (rotation) {
@@ -30,7 +31,7 @@ public class PickUpMatrix : MonoBehaviour {
 			myMatrix = new ScalingMatrixModifier(new Vector2(sx,sy));
 		}
 		InventoryManager.instance.AddMatrixModifier (myMatrix);
-		Destroy (gameObject);
+        gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
