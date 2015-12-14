@@ -5,7 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Level_1_try.unity
+  - enabled: 1
+    path: Assets/Level_1_try_arnoldv2.unity
+  - enabled: 1
+    path: Assets/Level_2_try.unity
+  - enabled: 1
+    path: Assets/Level_3_try.unity
   - enabled: 1
     path: Assets/Scenes/GameEnd.unity

@@ -67,6 +67,8 @@ public class MatrixPlatformManager : MonoBehaviour {
             {
                 Destroy(platformCatcher.Catcher);
                 Destroy(platformCatcher.PivotIndicator);
+                foreach (var panel in platformCatcher.platformIndicators)
+                    Destroy(panel.Value2);
                 platformCatchers.RemoveAt(i);
                 i--;
             }
@@ -311,7 +313,6 @@ public class MatrixPlatformManager : MonoBehaviour {
         // Apply the modifier
         InventoryManager.instance.Consume(matrixModifier);
         StartAnimation(platformCatcher.Platform.Pivot, matrixModifier);
-        // TODO: tell the inventory manager this object has been used
 
     }
 

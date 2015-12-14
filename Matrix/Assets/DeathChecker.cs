@@ -25,6 +25,7 @@ public class DeathChecker : MonoBehaviour {
 
     void Die()
     {
+        ScreenShakeManager.instance.ScreenShake(0.3f, 0.7f);
         InventoryManager.instance.Clear();
         CheckpointManager.Instance.RestoreLastCheckpoint();
     }
