@@ -8252,7 +8252,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1424811796}
   onScreenOffset: {x: 10, y: 5}
   dropperPrefab: {fileID: 177860, guid: 26ef0e7fa70c4c249abb46fe9b78885e, type: 2}
-  visualPivotPrefab: {fileID: 0}
+  pivotIndicatorPrefab: {fileID: 188918, guid: 3cf33e5db1fa52c4f94a99d890bfd5dc, type: 2}
   moveablePanelPrefab: {fileID: 0}
   player: {fileID: 2075748289}
 --- !u!1 &637622298
@@ -25763,7 +25763,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2075748289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82, y: 48, z: 0}
+  m_LocalPosition: {x: -35.7999992, y: 48, z: 0}
   m_LocalScale: {x: 2.33999991, y: 2.62999988, z: 1.48000002}
   m_Children:
   - {fileID: 750790348}

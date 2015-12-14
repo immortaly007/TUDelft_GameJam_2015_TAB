@@ -36,7 +36,7 @@ public class MatrixRainStatic : MonoBehaviour {
                 {
                     var symbolGO = MatrixSymbolPool.instance.Get(possiblePosition);
                     var textMesh = symbolGO.GetComponent<TextMesh>();
-                    symbolGO.transform.SetParent(transform);
+                    //symbolGO.transform.SetParent(transform);
                     DigitalRainSymbol symbol = symbolGO.GetComponent<DigitalRainSymbol>();
                     symbol.averageSymbolSwitchTime = averageSymbolSwitchTime;
                     symbol.symbols = symbols;
