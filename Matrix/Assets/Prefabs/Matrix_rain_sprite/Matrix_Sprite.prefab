@@ -112,7 +112,9 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 3
   averageSymbolSwitchTime: 10
-  symbols: 30003100
+  symbols:
+  - {fileID: 21300000, guid: b6291a5b1c505894899324c2ba473a7d, type: 3}
+  - {fileID: 21300000, guid: bffe6a5f4f5345e4c88715a0afd80aa8, type: 3}
   maxTimeAlive: 3
   rainCreatorPrefab: {fileID: 124028, guid: 89a40aa2d15088142b981d0ce7d94ff2, type: 2}
   minSpeed: 10
@@ -156,6 +158,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: symbols.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
@@ -220,6 +226,16 @@ Prefab:
       propertyPath: gradient.m_NumAlphaKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: symbols.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b6291a5b1c505894899324c2ba473a7d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: symbols.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: bffe6a5f4f5345e4c88715a0afd80aa8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123238}
