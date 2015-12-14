@@ -32,7 +32,7 @@ public class MatrixRainStatic : MonoBehaviour {
                 // Pick a random position within the collider space
                 Vector3 randOffset = new Vector3(Random.Range(0f, collider.bounds.size.x), Random.Range(0f, collider.bounds.size.y), 0f);
                 Vector3 possiblePosition = collider.bounds.min + randOffset;
-                if (collider.bounds.Contains(possiblePosition))
+                if (collider.OverlapPoint(possiblePosition))
                 {
                     var symbolGO = MatrixSymbolPool.instance.Get(possiblePosition);
                     var textMesh = symbolGO.GetComponent<TextMesh>();
