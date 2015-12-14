@@ -213,7 +213,7 @@ MonoBehaviour:
   rainCreatorPrefab: {fileID: 124028, guid: 89a40aa2d15088142b981d0ce7d94ff2, type: 2}
   minSpeed: 20
   maxSpeed: 30
-  maxChainLength: 100
+  maxChainLength: 70
   averageTimeBetweenDrops: 0.1
 --- !u!61 &912113733
 BoxCollider2D:
