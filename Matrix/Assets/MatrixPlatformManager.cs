@@ -171,7 +171,12 @@ public class MatrixPlatformManager : MonoBehaviour {
             Debug.Log("animation done");
 
 			int ti = 0;
-			Transform[] ts = animationTarget.GetComponentsInChildren<Transform>();
+
+			Transform[] ts = new Transform[animationTarget.transform.childCount];
+			for (int i = 0; i < animationTarget.transform.childCount; i++)
+				ts [i] = animationTarget.transform.GetChild (i);
+			
+			//Transform[] ts = children.Select (c => c.transform);
 
 
 
