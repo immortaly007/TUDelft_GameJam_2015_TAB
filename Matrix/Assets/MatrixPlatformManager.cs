@@ -11,7 +11,7 @@ public class MatrixPlatformManager : MonoBehaviour {
     public Vector2 onScreenOffset = new Vector2(10, 5);
 
     public GameObject dropperPrefab;
-    public GameObject visualPivotPrefab;
+    public GameObject pivotIndicatorPrefab;
     public GameObject moveablePanelPrefab;
 
     // Animation information
@@ -30,9 +30,11 @@ public class MatrixPlatformManager : MonoBehaviour {
     {
         public MatrixPlatform Platform { get; set; }
         public GameObject Catcher { get; set; }
+        public GameObject PivotIndicator { get; set; }
+        public List<GameObject> platformIndicators { get; set; }
 
         public PlatformCatcherPair() { }
-        public PlatformCatcherPair(MatrixPlatform platform, GameObject catcher) { Platform = platform; Catcher = catcher; }
+        public PlatformCatcherPair(MatrixPlatform platform, GameObject catcher, GameObject pivotIndicator) { Platform = platform; Catcher = catcher; PivotIndicator = pivotIndicator; }
     }
 
 
@@ -59,6 +61,7 @@ public class MatrixPlatformManager : MonoBehaviour {
             if (!OnScreen(platformCatcher.Platform.Pivot))
             {
                 Destroy(platformCatcher.Catcher);
+                Destroy(platformCatcher.PivotIndicator);
                 platformCatchers.RemoveAt(i);
                 i--;
             }
@@ -71,7 +74,13 @@ public class MatrixPlatformManager : MonoBehaviour {
             {
                 var dropperGO = Instantiate(dropperPrefab);
                 dropperGO.transform.SetParent(mainCanvas.transform);
-                platformCatchers.Add(new PlatformCatcherPair(platform, dropperGO));
+                dropperGO.transform.position = Vector3.zero;
+                var pivotIndicatorGO = Instantiate(pivotIndicatorPrefab);
+                pivotIndicatorGO.transform.SetParent(platform.transform);
+                pivotIndicatorGO.transform.localPosition = Vector3.zero;
+                pivotIndicatorGO.transform.localScale = Vector3.one;
+                pivotIndicatorGO.transform.localRotation = Quaternion.identity;
+                platformCatchers.Add(new PlatformCatcherPair(platform, dropperGO, pivotIndicatorGO));
                 // TODO: Add an event listener to the platform to tell is of it has caught something.
             }
         }
