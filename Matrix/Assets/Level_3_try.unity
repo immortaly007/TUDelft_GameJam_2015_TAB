@@ -20138,7 +20138,7 @@ MonoBehaviour:
   onScreenOffset: {x: 10, y: 5}
   dropperPrefab: {fileID: 177860, guid: 26ef0e7fa70c4c249abb46fe9b78885e, type: 2}
   pivotIndicatorPrefab: {fileID: 188918, guid: 3cf33e5db1fa52c4f94a99d890bfd5dc, type: 2}
-  moveablePanelPrefab: {fileID: 0}
+  moveablePanelPrefab: {fileID: 196448, guid: ec73938fcb93af547981da2e36e07d4d, type: 2}
   player: {fileID: 899499309}
 --- !u!1 &1744777786
 GameObject:
