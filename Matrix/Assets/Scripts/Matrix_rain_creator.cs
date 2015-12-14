@@ -27,7 +27,7 @@ public class Matrix_rain_creator : MonoBehaviour {
     void Start()
     {
         //timeAlive = UnityEngine.Random.Range(0f, 3f);
-        offset = new Vector3 (0.0f,-0.2f,0f);
+        offset = new Vector3(0, -symbolPrefab.transform.localScale.y, 0);
         position = new Vector3(0, 0, 0);
         maxChainLength = Mathf.Max(maxChainLength, 5);
         amount = Random.Range(5, maxChainLength);

@@ -36,7 +36,7 @@ public class MatrixPlatformManager : MonoBehaviour {
         public MatrixPlatform Platform { get; set; }
         public GameObject Catcher { get; set; }
         public GameObject PivotIndicator { get; set; }
-        public List<GameObject> platformIndicators { get; set; }
+        public List<Tuple<Collider2D, GameObject>> platformIndicators { get; set; }
 
         public PlatformCatcherPair() { }
         public PlatformCatcherPair(MatrixPlatform platform, GameObject catcher, GameObject pivotIndicator) { Platform = platform; Catcher = catcher; PivotIndicator = pivotIndicator; }
@@ -77,15 +77,34 @@ public class MatrixPlatformManager : MonoBehaviour {
         {
             if (OnScreen(platform.Pivot) && !HasCatcherFor(platform))
             {
+                // Create the dropper object
                 var dropperGO = Instantiate(dropperPrefab);
                 dropperGO.transform.SetParent(mainCanvas.transform);
                 dropperGO.transform.position = Vector3.zero;
+                // Create the pivot indicator
                 var pivotIndicatorGO = Instantiate(pivotIndicatorPrefab);
                 pivotIndicatorGO.transform.SetParent(platform.transform);
                 pivotIndicatorGO.transform.localPosition = Vector3.zero;
                 pivotIndicatorGO.transform.localScale = Vector3.one;
                 pivotIndicatorGO.transform.localRotation = Quaternion.identity;
-                platformCatchers.Add(new PlatformCatcherPair(platform, dropperGO, pivotIndicatorGO));
+
+                var platformCatcherInfo = new PlatformCatcherPair(platform, dropperGO, pivotIndicatorGO);
+                platformCatcherInfo.platformIndicators = new List<Tuple<Collider2D, GameObject>>();
+
+                // Create the rain on the colliders that can be influenced
+                var colliders = platform.Pivot.GetComponentsInChildren<Collider2D>();
+                foreach(var collider in colliders)
+                {
+                    var moveablePanelIndicator = Instantiate(moveablePanelPrefab);
+                    moveablePanelIndicator.transform.SetParent(platform.transform);
+                    moveablePanelIndicator.transform.localScale = collider.bounds.size;
+                    moveablePanelIndicator.transform.position = collider.transform.position;
+                    moveablePanelIndicator.transform.rotation = collider.transform.rotation;
+                    platformCatcherInfo.platformIndicators.Add(new Tuple<Collider2D, GameObject>(collider, moveablePanelIndicator));
+
+                }
+
+                platformCatchers.Add(platformCatcherInfo);
                 // TODO: Add an event listener to the platform to tell is of it has caught something.
             }
         }
@@ -97,6 +116,13 @@ public class MatrixPlatformManager : MonoBehaviour {
             var catcherTransform = platformCatcher.Catcher.GetComponent<RectTransform>();
             catcherTransform.position = new Vector3(pos.x, pos.y, 0);
 			catcherTransform.localScale = new Vector3 (1, 1, 1);
+
+            foreach (var panel in platformCatcher.platformIndicators)
+            {
+                panel.Value2.transform.localScale = panel.Value1.bounds.size;
+                panel.Value2.transform.position = panel.Value1.transform.position;
+                panel.Value2.transform.rotation = panel.Value1.transform.rotation;
+            }
         }
 
         // animate current thingy

@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a348e0bc84be13d44b9c993b7bd83e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolPrefab: {fileID: 180686, guid: dd594af0d00e8bd47aad33fba771f948, type: 2}
+  symbolPrefab: {fileID: 119800, guid: 1e99d83d76166724a99778032e6584eb, type: 2}
   gradient:
     key0:
       serializedVersion: 2
@@ -117,7 +117,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: symbolPrefab
       value: 
-      objectReference: {fileID: 180686, guid: dd594af0d00e8bd47aad33fba771f948, type: 2}
+      objectReference: {fileID: 119800, guid: 1e99d83d76166724a99778032e6584eb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124028}

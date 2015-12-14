@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175066}
   m_LocalRotation: {x: 0.15643449, y: 0, z: 0, w: 0.98768836}
-  m_LocalPosition: {x: 1.9, y: 58.2, z: -2.5}
+  m_LocalPosition: {x: -18.49, y: 67.93, z: -10.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,8 +97,8 @@ MonoBehaviour:
   hdr: 1
   sepBlurSpread: 2.5
   quality: 1
-  bloomIntensity: 2
-  bloomThreshold: 1.51
+  bloomIntensity: 0.5
+  bloomThreshold: 1
   bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
   bloomBlurIterations: 2
   hollywoodFlareBlurIterations: 2
